@@ -158,6 +158,11 @@ public class VendaComputadorView extends javax.swing.JFrame {
         pnlHD.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Escolha o tipo e capacidade do HD", 0, 0, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         jComboTipoHD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HDD 1TB", "SSD 256 GB", "SSD 1TB" }));
+        jComboTipoHD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboTipoHDActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlHDLayout = new javax.swing.GroupLayout(pnlHD);
         pnlHD.setLayout(pnlHDLayout);
@@ -193,6 +198,11 @@ public class VendaComputadorView extends javax.swing.JFrame {
         });
 
         jCheckBox3.setText("Mochila");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Garantia Extendida", "Suporte no Local", "Suporte 24 horas", "Instalação do SO" };
@@ -241,6 +251,11 @@ public class VendaComputadorView extends javax.swing.JFrame {
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         jMenuArq.setText("Arquivo");
 
@@ -337,7 +352,7 @@ public class VendaComputadorView extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
+        // TDO add your handling code here:
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -369,28 +384,55 @@ public class VendaComputadorView extends javax.swing.JFrame {
         }
         
        if(jToggleButtonWin.isSelected()){
-           tipoSO = "Windows";
-           meuComputador.setSistemaOperacional(tipoSO);
-           // OU   --> meuComputador.setSistemaOperacional(jToggleButtonWin.getText());
+           //tipoSO = "Windows";
+           //meuComputador.setSistemaOperacional(tipoSO);
+           meuComputador.setSistemaOperacional(jToggleButtonWin.getText());
        } 
        if(jToggleButtonLinux.isSelected()){
            tipoSO = "Linux";
            meuComputador.setSistemaOperacional(tipoSO);
            // OU   --> meuComputador.setTipoComputador(jToggleButtonLinux.getText());
-           
-       }
-       
-        if (jComboTipoHD.isSelected()) {
+        }
+      
+        meuComputador.HD = jComboTipoHD.getSelectedItem().toString();
+               
+        if(jCheckBox1.isSelected()){
+            
+            meuComputador.acessorios[0]=jCheckBox1.getText();
             
         }
-       
-       
-       
-       
+        if(jCheckBox2.isSelected()){
+            
+            meuComputador.acessorios[1]=jCheckBox2.getText();
+        }
+        
+        if(jCheckBox3.isSelected()){
+            
+            meuComputador.acessorios[2]=jCheckBox3.getText();
+        }
+        
+        
+        meuComputador.serviços[0] = jList1.getSelectedValuesList().toString();
+        
+        System.out.println(meuComputador.serviços[0]);
+        
+        
        JOptionPane.showMessageDialog(null,"Obrigado por comprar um "+ meuComputador.tipoComputador+ " com " + meuComputador.sistemaOperacional);
        
-       //System.out.println("Obrigado por comprar um "+ meuComputador.tipoComputador+ " com " + meuComputador.sistemaOperacional);
+       
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void jComboTipoHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTipoHDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboTipoHDActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    System.exit(0);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

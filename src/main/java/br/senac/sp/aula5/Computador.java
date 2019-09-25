@@ -7,8 +7,8 @@ public class Computador {
     String tipoComputador;
     String sistemaOperacional;
     String HD;
-    String[] acessorios;
-    String[] serviços;
+    String[] acessorios = new String[3];
+    String[] serviços = new String[4];
 
 
     public Computador() {
